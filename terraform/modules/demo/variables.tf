@@ -5,4 +5,6 @@ variable "availability-zones" {
 variable "private-subnet" {}
 variable "public-subnet" {}
 variable "vpc-cidr" {}
+variable "ami"{}
+variable "instance_type"{}
 

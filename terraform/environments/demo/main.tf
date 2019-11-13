@@ -16,6 +16,13 @@ module "demo" {
   availability-zones = "${var.availability-zones}"
   public-subnet = "172.28.1.0/24"
   private-subnet = "172.28.2.0/24"
+  ami = "${var.ami}"
+  instance_type = "${var.instance_type}"
 }
+/*module "vpc" {
+  source = "../../modules/vpc"
+  ami = "${var.ami}"
+  instance_type = "${var.instance_type}"
+}*/
 
 

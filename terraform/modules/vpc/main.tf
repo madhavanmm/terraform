@@ -52,3 +52,7 @@ resource "aws_route_table_association" "private-ass" {
 	subnet_id = "${aws_subnet.vpc-private.id}"
 	route_table_id = "${aws_route_table.vpc-terra-rw-pr.id}"
 }
+resource "aws_instance" "instance" {
+  ami           = "${var.ami}"
+  instance_type = "${var.instance_type}"
+}
