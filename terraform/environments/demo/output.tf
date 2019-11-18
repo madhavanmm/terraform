@@ -11,4 +11,6 @@ output "instance-id" {
 output "public-rt" {
   value = "${module.demo.public-rt}"
 }
-output "private-rt" {                                                                 value = "${module.demo.public-rt}"                                                }
+output "private-rt" {                                                                
+value = "${module.demo.public-rt}"                                               
+}

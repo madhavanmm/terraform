@@ -19,10 +19,6 @@ module "demo" {
   ami = "${var.ami}"
   instance_type = "${var.instance_type}"
 }
-/*module "vpc" {
-  source = "../../modules/vpc"
-  ami = "${var.ami}"
-  instance_type = "${var.instance_type}"
-}*/
+
 
 

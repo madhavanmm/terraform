@@ -54,5 +54,13 @@ resource "aws_route_table_association" "private-ass" {
 }
 resource "aws_instance" "instance" {
   ami           = "${var.ami}"
-  instance_type = "${var.instance_type}"
+  key_name = "demo"
+instance_type = "${var.instance_type}"
+  user_data              = <<-EOF
+        #!/bin/bash
+        yum install httpd -y
+        echo "Welcome to my terra_ec2 Instance web server" > /var/www/html/index.html
+        service httpd start
+        EOF
 }
+
