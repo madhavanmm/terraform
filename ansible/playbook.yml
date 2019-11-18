@@ -1,0 +1,9 @@
+---
+- hosts: tag_Name_demo
+  remote_user: ec2-user
+  become: True
+  tasks:
+    - name: install the latest version of Apache
+      yum:
+        name: httpd
+        state: latest
