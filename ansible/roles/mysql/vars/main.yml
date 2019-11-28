@@ -1,0 +1,11 @@
+---
+# vars file for mysql
+   mysql_packages:
+     Amazon-2018:
+       - mysql-server
+       - mysql-devel
+       - MySQL-python27
+   mysql_packages: "{{ _mysql_packages[ansible_distribution ~ '-' ~ ansible_distribution_major_version] | default(_mysql_packages[ansible_distribution] | default(_mysql_packages['default'])) }}"
+
+   mysql_service:
+     name: mysqld  

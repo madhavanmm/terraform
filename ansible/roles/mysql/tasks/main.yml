@@ -1,0 +1,51 @@
+---
+ - name: Install package
+   yum:
+    name: mysql
+    state: present
+
+
+ - name: Install MySQL
+   yum: name=mysql-server state=installed
+# tasks file for mysql
+# - name: install mysql
+#   yum:
+#     name: "{{ mysql_packages }}"
+#     state: latest
+#   with_items:
+#     - mysql-server
+#     - mysql-client
+#     - python-mysqldb
+         # register: mysql_install_mysql
+         # when: ansible_os_family == "RedHat" and 'mysql' in group_names and ansible_distribution != "Amazon"
+         # until: mysql_install_mysql is succeeded
+         # retries: 3   
+ - name: configure mysql
+   ini_file:
+     dest: /etc/my.cnf
+     section: mysqld
+     option: port
+     value: "{{ port }}"
+   notify:
+     - restart mysqld server
+ - name: Install pip
+   yum:
+     name: python-pip
+     update_cache: yes
+     state: present
+     # - name: Install the Python MySQLB module
+     #pip:
+     #name: MySQL-python   
+# - name: Add mysql-user
+#   mysql_user: 
+#    name: maddy
+#    password: 12345678
+#    priv: '*.*:ALL'
+#     state: present
+#   notify:
+#     - start mysqld      
+ - name: start and enable mysql
+   service:
+     name: mysqld
+     state: restarted
+

@@ -1,0 +1,14 @@
+---
+ - name: install the latest version of Apache
+   yum:
+     name: nginx
+     state: latest
+ - name: copying template 
+   template:
+     src: ../templates/demo.conf
+     dest: /etc/nginx/nginx.conf   
+ - name: restart ngnix
+   service:
+     name: nginx
+     state: restarted  
+   
